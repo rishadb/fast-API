@@ -1,4 +1,4 @@
-#TO CONNECT TO DB
+#TO CONNECT TO THE DB
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 #above imports copied from fastAPI/alchemy
