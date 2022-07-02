@@ -9,16 +9,18 @@ on:   #trigger for cicd code to run; refer docs for all kinds of triggers like b
       - "main"
 
 jobs: #jobs to run after the trigger
-  job1:  #jobName
+  job1:   #jobName
+  enironment: #for the environments set in github, to access the specified env vars
+    name: testing #name of the env from github
     env: #this env vars are accessible for this job only. mention env at 'on' level to be asscessible to all jobs
-      DATABASE_HOSTNAME: localhost
-      DATABASE_PORT: 5432
-      DATABASE_PASSWORD: admin
-      DATABASE_NAME: fastapi
-      DATABASE_USERNAME: postgres
-      SECRET_KEY: vn387otDFJ3489FHhO87T76ir97I5DR5i7drow76rd5wer9q87G69T7IFUUO67Of865DO67rfri6RD976or67O
-      ALGORITHM: HS256
-      ACCESS_TOKEN_EXPIRES_MINUTES: 30
+      DATABASE_HOSTNAME: ${{secrets.DATABASE_HOSTNAME}} #access the env values stores in secrets of github here like this
+      DATABASE_PORT: ${{secrets.DATABASE_PORT}}
+      DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+      DATABASE_NAME: ${{secrets.DATABASE_NAME}}
+      DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
     runs-on: ubuntu-latest #type of machine to run the job on
     steps: #named pipeline steps
       - name: pulling git repo #give name for the step
