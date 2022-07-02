@@ -17,7 +17,7 @@ def test_create_user(client):
     assert res.status_code == 201
     assert new_user.email == "hello2@gmail.com" #refer response schema fot get params
 
-def test_login(client):
-    res = client.post("/login", data= {"username":"hello2@gmail.com", "password":"pass2"}) #load is passed as data since login sends form data
-    print(res.json()) #for debugging here
-    assert res.status_code == 200
+#def test_login(client):
+#    res = client.post("/login", data= {"username":"hello2@gmail.com", "password":"pass2"}) #load is passed as data since login sends form data
+#    print(res.json()) #for debugging here
+#    assert res.status_code == 200
