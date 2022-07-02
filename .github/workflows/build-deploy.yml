@@ -10,8 +10,8 @@ on:   #trigger for cicd code to run; refer docs for all kinds of triggers like b
 
 jobs: #jobs to run after the trigger
   job1:   #jobName
-  enironment: #for the environments set in github, to access the specified env vars
-    name: testing #name of the env from github
+    environment: #for the environments set in github, to access the specified env vars
+      name: testing #name of the env from github
     env: #this env vars are accessible for this job only. mention env at 'on' level to be asscessible to all jobs
       DATABASE_HOSTNAME: ${{secrets.DATABASE_HOSTNAME}} #access the env values stores in secrets of github here like this
       DATABASE_PORT: ${{secrets.DATABASE_PORT}}
