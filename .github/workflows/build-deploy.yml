@@ -16,6 +16,14 @@ jobs: #jobs to run after the trigger
         uses: actions/checkout@v2  # use checkout from market place for git pull#command to be running; refer market place for common tasks prebuilt actions 
       - name: run a linux CLI command
         run: echo "heloo" #to run a linux command here coz we are on linux
+      - name: Install python version 3.9
+        uses: actions/setup-python@v2 #use setup-python from actions
+        with:
+          python-version: "3.9"
+      - name: update pip
+        run: python -m pip install --upgrade pip #command to be run on our linuc machine
+      - name: install all dependancies
+        run: pip install -r requirements.txt
 
 
   
