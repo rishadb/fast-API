@@ -1,6 +1,6 @@
 #pytest -v -s <testFilePath>
 import pytest
-from app import schemas
+from app import schemas #problem here
 from .database import client, session #session is needed coz client calls for session
 #test funcs for path ops
 
