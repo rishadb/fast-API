@@ -5,13 +5,13 @@ from sqlalchemy.orm import sessionmaker
 from .config import settings #import the initiated setting here to import secret vals
 
 
-#connection to DB - Unique URL to connect to DB: format: SQLALCHEMY_DATABASE_URL = 'postgresql://<username>:password@<ip_address/hostname>/<db_name>'
+#connection to DB for queries - Unique URL to connect to DB: format: SQLALCHEMY_DATABASE_URL = 'postgresql://<username>:password@<ip_address/hostname>/<db_name>'
 
 #with config.py file
 SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
 
 
-#engine to connect alchemy to postgres
+#engine to connect alchemy to postgres for queries
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 #session for talking to DB

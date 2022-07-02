@@ -1,4 +1,3 @@
-from App import database
 from .. import models, schemas, oauth2, database #import table models we created
 from sqlalchemy.orm import Session # for Session used in path func
 #depends for alchemy session , status for http error status code, APIrouter for routing

@@ -6,7 +6,7 @@ from .routers import post, user, auth, votes # importing the API files
 from fastapi.middleware.cors import CORSMiddleware #CORS
 
 
-#to create all the tables from models; not needed now since we use alembic to create and update the tables
+#to create all the tables from models; not needed now since we use alembic to create and update the tables #use alembic head command in CLI
 #models.Base.metadata.create_all(bind = engine) #copied from fast api/alchemy
 
 #define app

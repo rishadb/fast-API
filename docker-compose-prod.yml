@@ -1,0 +1,50 @@
+#version of docker compose to use
+version: "3"
+
+#use a service in services to make a contaier
+services:
+
+  api: #name of service/container
+    #build: . #= docker build . command; builds image if it doesn't exist
+    image: rishadktb/fastapi #reponame from docker hub to pull the image instead of builing the image
+    ports:  #by default, outside cant talk to container. here we open a list of ports for connection to outside
+      - 8000:8000 #8000 is the port mentioned in dockerfile #<port_on_local_host>: <port_on_container>
+        #env_file: #to point to a .env file in the container
+        #  - ./.env
+    
+    environment: #OR set env here 
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}  #all vals are to be fetched from .env
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALGORITHM=${ALGORITHM}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+
+    
+    depends_on: #to startup the postgres container first as out api is dependand on it.
+      - postgres
+  #to set up postgres in this container/service
+  postgres:
+    image: postgres #to use prebuild postgrs image from dockerhub(refer)
+    environment: #setup the DB, refer dockerhub-postgres
+      - POSTGRES_PASSWORD={DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+
+  #data in the container doesn't persist when container goes down; to persist the data use volume in local machine
+  #types of volumes: anoymous, named vol,...
+    volumes: 
+    #to create a named volume
+      - postgres-db:/var/lib/postgresql/data  #nameForTheVol:dataPathInTheContainerTobeSaved(refer hub doc)
+
+  #define volume globally so technically multiple containers can reference them
+volumes:
+  postgres-db:
+
+#
+#
+#
+#
+#
+#docker-compose up -d :to_run the compose file in CLI

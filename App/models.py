@@ -4,7 +4,7 @@ from sqlalchemy import TIMESTAMP, Column, ForeignKey, Integer, String, Boolean #
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship #for getting relationship to anathor table class
 
-#all of the models to create tables will be extending this base class
+#all of the models to create tables will be extending this base class, can use base anytime to create table too
 Base = declarative_base()
 
 #users table

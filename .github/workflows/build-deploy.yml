@@ -1,0 +1,23 @@
+name: Build and Deploy Code
+
+on:   #trigger for cicd code to run; refer docs for all kinds of triggers like below
+  push: # trigger on push requests 
+    branches: #trigger push on branches of lists below
+      - "main" #list all the other branches below if any needed triggering
+  pull_request: #trigger on pull requests
+    branches:
+      - "main"
+
+jobs: #jobs to run after the trigger
+  job1:  #jobName
+    runs-on: ubuntu-latest #type of machine to run the job on
+    steps: #named pipeline steps
+      - name: pulling git repo #give name for the step
+        uses: actions/checkout@v2  # use checkout from market place for git pull#command to be running; refer market place for common tasks prebuilt actions 
+      - name: run a linux CLI command
+        run: echo "heloo" #to run a linux command here coz we are on linux
+
+
+  
+
+      
